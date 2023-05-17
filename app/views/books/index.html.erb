@@ -1,0 +1,9 @@
+<% @books.each do |book| %>
+<div>
+  <%= image_tag book.get_image %>
+  <p>投稿ユーザー画像：<%= image_tag 'sample-author1.jpg' %></p>
+  <p>title：<%= book.title %></p>
+  <p>感想：<%= book.body %></p>
+  <p>ユーザーネーム：<%= book.user.name %></p>
+</div>
+<% end %>
