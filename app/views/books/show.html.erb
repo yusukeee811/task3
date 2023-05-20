@@ -1,11 +1,20 @@
-<div>
-  <%= image_tag @book.get_image %>
-  <p>title：<%= @book.title %></p>
-  <p>感想：<%= @book.body %></p>
-  <p>投稿ユーザー画像：<%= image_tag 'sample-author1.jpg' %></p>
-  <p>ユーザーネーム：<%= @book.user.name %></p>
-  <p>投稿日：<%= @book.created_at.strftime('%Y/%m/%d') %></p>
-  <% if @post_image.user == current_user %>
-    <%= link_to "削除", book_path(@book), method: :delete %>
-  <% end %>
+<p id="notice"></p>
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <%=render 'users/list', user: @user, book: @book %>
+    <div class="col-md-8 offset-md-1">
+    <h2>Book detail</h2>
+    <table class="table">
+      <tbody>
+        <tr>
+          <td><%= image_tag @user.get_profile_image(100,100) %></td>
+          <td><%= @book.title %></td>
+          <td><%= @book.body %></td>
+          <td><%= link_to 'Edit', edit_book_path(current_user), class: 'btn btn-sm btn-success' %></td>
+          <td><%= link_to 'Destroy', book_path(current_user), method: :delete,"data-confirm" => "本当に消しますか？", class: 'btn btn-sm btn-danger' %></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
 </div>
