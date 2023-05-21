@@ -24,7 +24,7 @@
           <ul class="navbar-nav ml-auto">
             <% if user_signed_in? %>
               <li class="nav-item">
-                <%= link_to root_path, class: 'nav-link text-light' do %>
+                <%= link_to user_path(current_user), class: 'nav-link text-light' do %>
                 <i class="fas fa-home"></i> Home<% end %>
               </li>
               <li class="nav-item">
@@ -62,6 +62,7 @@
       </nav>
     </header>
     <main>
+    <%= render 'layouts/flash' %>
     <%= yield %>
     </main>
     <footer>
